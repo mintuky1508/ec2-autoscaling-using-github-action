@@ -15,6 +15,6 @@ variable "security_groups" {
 
 variable "subnet" {
   description = "List of Subnet IDs"
-  type        = list(string)
+  type        = string
 }
 
