@@ -49,8 +49,8 @@ jobs:
           terraform plan \
             -var="ami=${{ github.event.inputs.ami }}" \
             -var="instance_type=${{ github.event.inputs.instance_type }}" \
-            -var="subnet_id=${{ github.event.inputs.subnet }}" \
-            -var="vpc_security_group_id=${{ github.event.inputs.security_groups }}"
+            -var="subnet=${{ github.event.inputs.subnet }}" \
+            -var="security_groups=${{ github.event.inputs.security_groups }}"
 
 
       - name: Terraform Apply
@@ -58,6 +58,6 @@ jobs:
           terraform apply -auto-approve \
             -var="ami=${{ github.event.inputs.ami }}" \
             -var="instance_type=${{ github.event.inputs.instance_type }}" \
-            -var="subnet_id=${{ github.event.inputs.subnet }}" \
-            -var="vpc_security_group_id=${{ github.event.inputs.security_groups }}"
+            -var="subnet=${{ github.event.inputs.subnet }}" \
+            -var="security_groups=${{ github.event.inputs.security_groups }}"
 
