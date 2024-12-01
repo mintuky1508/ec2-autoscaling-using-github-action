@@ -7,7 +7,7 @@ resource "aws_launch_template" "example" {
 
   network_interfaces {
     associate_public_ip_address = true
-    security_groups             = var.security_groups
+    security_groups             = [var.security_groups]
   }
 
   tag_specifications {
