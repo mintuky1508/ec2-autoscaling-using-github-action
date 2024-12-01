@@ -1,10 +1,10 @@
 module "launch_template" {
   source            = "./modules/launch_template"
   name_prefix       = "example-lt"
-  ami_id            = "ami-00eb69d236edcfaf8" # Replace with your AMI IDs
-  instance_type     = "t2.micro"
+  ami_id            = var.ami_id # Replace with your AMI IDs
+  instance_type     = var.instance_type
   key_pair          = "tf-test"
-  security_groups   = ["sg-01198e4d5333ac9b4"] # Replace with your Security Group ID
+  security_groups   = var.security_groups # Replace with your Security Group ID
   tags = {
     Environment = "Production"
   }
@@ -14,9 +14,9 @@ module "autoscaling" {
   source              = "./modules/autoscaling"
   desired_capacity    = 2
   max_size            = 5
-  min_size            = 2
+  min_size            = 1
   launch_template_id  = module.launch_template.launch_template_id
-  subnets             = ["subnet-0b3aa2ec8fe465bbf", "subnet-08359f6cf3a78039f"] # Replace with your Subnet IDs
+  subnets             = var.subnet # Replace with your Subnet IDs
   name                = "test-asg"
   tag_name            = "ec2-instance"
 }
