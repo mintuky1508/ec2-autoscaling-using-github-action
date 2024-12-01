@@ -13,7 +13,7 @@ variable "security_groups" {
   type        = list(string)
 }
 
-variable "subnets" {
+variable "subnet" {
   description = "List of Subnet IDs"
   type        = list(string)
 }
