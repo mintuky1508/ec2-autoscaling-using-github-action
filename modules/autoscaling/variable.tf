@@ -4,7 +4,7 @@ variable "min_size" {}
 variable "launch_template_id" {}
 variable "subnet" {
   description = "List of subnet IDs"
-  type        = list(string)
+  type        = string
 }
 
 variable "name" {}
