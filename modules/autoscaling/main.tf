@@ -8,7 +8,7 @@ resource "aws_autoscaling_group" "example" {
     version = "$Latest"
   }
 
-  vpc_zone_identifier = var.subnet
+  vpc_zone_identifier = [var.subnet]
 
   tag {
     key                 = "Name"
