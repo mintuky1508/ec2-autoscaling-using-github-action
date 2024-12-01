@@ -1,9 +1,21 @@
-name: Terraform EC2 Auto Scaling Deployment
+name: Terraform EC2 Deployment
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+    inputs:
+      ami_id:
+        description: 'AMI ID for the EC2 instance'
+        required: true
+      instance_type:
+        description: 'Type of EC2 instance'
+        required: true
+        default: 't2.micro'
+      security_groups:
+        description: 'Security group IDs for the EC2 instance'
+        required: true
+      subnet:
+        description: 'Subnet ID for the EC2 instance'
+        required: true
 
 jobs:
   terraform:
@@ -33,7 +45,11 @@ jobs:
       run: terraform validate
 
     - name: Terraform Plan
-      run: terraform plan -out=tfplan
+      run: terraform plan -out=tfplan \
+        -var="ami_id=${{ github.event.inputs.ami_id }}" \
+        -var="instance_type=${{ github.event.inputs.instance_type }}" \
+        -var="security_groups=${{ github.event.inputs.security_groups }}" \
+        -var="subnet=${{ github.event.inputs.subnet }}"
 
     - name: Terraform Apply
       run: terraform apply -auto-approve tfplan
