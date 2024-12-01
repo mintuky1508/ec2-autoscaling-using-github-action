@@ -10,11 +10,11 @@ variable "instance_type" {
 
 variable "security_groups" {
   description = "The security group IDs for the EC2 instance"
-  type        = list(string)
+  type        = string
 }
 
 variable "subnet" {
   description = "List of Subnet IDs"
-  type        = list(string)
+  type        = string
 }
 
