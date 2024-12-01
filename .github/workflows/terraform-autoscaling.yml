@@ -52,11 +52,19 @@ jobs:
             -var="subnet=${{ github.event.inputs.subnet }}" \
             -var="security_groups=${{ github.event.inputs.security_groups }}"
 
+      # - name: Terraform Apply
+      #   run: |
+      #     terraform apply -auto-approve \
+      #       -var="ami=${{ github.event.inputs.ami }}" \
+      #       -var="instance_type=${{ github.event.inputs.instance_type }}" \
+      #       -var="subnet=${{ github.event.inputs.subnet }}" \
+      #       -var="security_groups=${{ github.event.inputs.security_groups }}"
+
       - name: Terraform Apply
-        run: |
-          terraform apply -auto-approve \
-            -var="ami=${{ github.event.inputs.ami }}" \
-            -var="instance_type=${{ github.event.inputs.instance_type }}" \
-            -var="subnet=${{ github.event.inputs.subnet }}" \
-            -var="security_groups=${{ github.event.inputs.security_groups }}"
+        run: terraform apply -auto-approve \
+          -var="ami=${{ github.event.inputs.ami }}" \
+          -var="instance_type=${{ github.event.inputs.instance_type }}" \
+          -var="security_groups=${{ github.event.inputs.security_group_id }}" \
+          -var="subnet_id=${{ github.event.inputs.subnet_id }}"
+
 
