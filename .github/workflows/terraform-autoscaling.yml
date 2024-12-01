@@ -43,7 +43,7 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      Plan the Terraform deployment
+      #Plan the Terraform deployment
       - name: Terraform Plan
         run: |
           terraform plan \
