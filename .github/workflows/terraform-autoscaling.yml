@@ -44,13 +44,21 @@ jobs:
         run: terraform init
 
       # Plan the Terraform deployment
+      # - name: Terraform Plan
+      #   run: |
+      #     terraform plan \
+      #       -var="ami=${{ github.event.inputs.ami }}" \
+      #       -var="instance_type=${{ github.event.inputs.instance_type }}" \
+      #       -var="subnet=${{ github.event.inputs.subnet }}" \
+      #       -var="security_groups=${{ github.event.inputs.security_groups }}"
+
       - name: Terraform Plan
-        run: |
-          terraform plan \
+        run: terraform plan \
             -var="ami=${{ github.event.inputs.ami }}" \
             -var="instance_type=${{ github.event.inputs.instance_type }}" \
-            -var="subnet=${{ github.event.inputs.subnet }}" \
-            -var="security_groups=${{ github.event.inputs.security_groups }}"
+            -var="subnet=${{ github.event.inputs.subnet_type }}" \
+            -var="security_groups=${{ github.event.inputs.security_group_id }}"
+
 
 
       - name: Terraform Apply
