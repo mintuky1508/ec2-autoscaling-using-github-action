@@ -3,7 +3,8 @@ variable "max_size" {}
 variable "min_size" {}
 variable "launch_template_id" {}
 variable "subnet" {
-  type = list(string)
+  description = "The Subnet ID"
+  type        = string
 }
 variable "name" {}
 variable "tag_name" {}
