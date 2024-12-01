@@ -16,7 +16,7 @@ module "autoscaling" {
   max_size            = 5
   min_size            = 1
   launch_template_id  = module.launch_template.launch_template_id
-  subnets             = [var.subnet] # Replace with your Subnet IDs
+  subnets             = [var.subnets] # Replace with your Subnet IDs
   name                = "test-asg"
   tag_name            = "ec2-instance"
 }
