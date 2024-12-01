@@ -13,7 +13,8 @@ variable "security_groups" {
   type        = list(string)
 }
 
-variable "subnet" {
-  description = "The subnet ID for the EC2 instance"
-  type        = string
+variable "subnets" {
+  description = "List of Subnet IDs"
+  type        = list(string)
 }
+
